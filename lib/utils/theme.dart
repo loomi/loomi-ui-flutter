@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static ThemeData _theme = ThemeData();
+  ThemeData _theme = ThemeData();
 
-  static ThemeData get getTheme {
+  ThemeData get getTheme {
     return _theme;
   }
 
-  static setTheme(ThemeData theme) {
+  setTheme(ThemeData theme) {
     _theme = theme;
   }
 }
