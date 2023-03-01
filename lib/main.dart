@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loomi_ui_flutter/utils/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomTheme.getTheme,
       home: const MyHomePage(),
     );
   }
