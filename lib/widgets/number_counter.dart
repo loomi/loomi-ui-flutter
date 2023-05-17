@@ -62,7 +62,7 @@ class _NumberCounterState extends State<NumberCounter> {
         children: [
           GestureDetector(
             child: GetIcon(
-              CustomIcons.subIcon,
+              CustomIcons.minusSquareRegular,
               width:
                   widget.subIconSize != null ? widget.subIconSize!.width : 18,
               heigth:
@@ -127,7 +127,7 @@ class _NumberCounterState extends State<NumberCounter> {
           const SizedBox(width: 10),
           GestureDetector(
             child: GetIcon(
-              CustomIcons.addIcon,
+              CustomIcons.plusSquareRegular,
               width:
                   widget.addIconSize != null ? widget.addIconSize!.width : 18,
               heigth:
