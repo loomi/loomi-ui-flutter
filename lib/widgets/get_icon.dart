@@ -13,13 +13,13 @@ class GetIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isSvg
-        ? SvgPicture.network(
+        ? SvgPicture.asset(
             icon,
             width: width,
             height: heigth,
             color: color,
           )
-        : Image.network(
+        : Image.asset(
             icon,
             width: width,
             height: heigth,
