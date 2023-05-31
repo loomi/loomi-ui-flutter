@@ -187,6 +187,6 @@ class CustomIcons {
 
   //PATH FUNCTION
   static String _svgParser(String icon) {
-    return "assets/vectors/$icon";
+    return "packages/loomi_ui_flutter/assets/vectors/$icon";
   }
 }
