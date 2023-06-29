@@ -185,6 +185,8 @@ class CustomIcons {
   static String volumeUpFilled = _svgParser("volume-up-filled.svg");
   static String volumeUpRegular = _svgParser("volume-up-regular.svg");
 
+  static String seekFoward = _svgParser("seek_foward.svg");
+  static String seekBackward = _svgParser("seek_backward.svg");
   //PATH FUNCTION
   static String _svgParser(String icon) {
     return "packages/loomi_ui_flutter/assets/vectors/$icon";
