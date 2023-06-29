@@ -18,7 +18,7 @@ void showLoomiDialog({
   double? width,
   double? height,
   double? overlappingColorOpacity,
-  double? counterRadius,
+  double? radius,
   Function()? firstActionTap,
   Function()? secondActionTap,
   Widget? icon,
@@ -46,15 +46,15 @@ void showLoomiDialog({
                 child: Material(
                   color: backgroundColor,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(counterRadius ?? 28),
+                    Radius.circular(radius ?? 28),
                   ),
                   child: Container(
                     decoration: BoxDecoration(
                       color:
                           (overlappingColor ?? Theme.of(context).primaryColor)
                               .withOpacity(overlappingColorOpacity ?? .11),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(28),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(radius ?? 28),
                       ),
                     ),
                     padding: internalPadding ?? const EdgeInsets.all(24),
@@ -86,7 +86,8 @@ void showLoomiDialog({
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),
-                        if (child != null) child,
+                        if (child != null) Flexible(child: child),
+                        if (height != null) const Spacer(),
                         Padding(
                           padding: actionsPadding ??
                               const EdgeInsets.only(

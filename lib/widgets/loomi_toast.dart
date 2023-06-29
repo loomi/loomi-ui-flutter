@@ -8,6 +8,7 @@ showLoomiToast({
   required String text,
   Widget? suffixIcon,
   Widget? prefixIcon,
+  TextStyle? textStyle,
   Color? textColor,
   Color? overlappingColor,
   double? overlappingColorOpacity,
@@ -20,13 +21,12 @@ showLoomiToast({
     barrierColor: Colors.transparent,
     builder: (context) {
       return LoomiToastComponent(
-        freshChatCallBack: freshChatCallBack,
         text: text,
-        backgroundColor: backgroundColor,
         overlappingColor: overlappingColor,
         overlappingColorOpacity: overlappingColorOpacity,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
+        textStyle: textStyle,
         textColor: textColor,
         counterRadius: counterRadius,
       );
@@ -36,22 +36,20 @@ showLoomiToast({
 
 class LoomiToastComponent extends StatefulWidget {
   final String text;
-  final Function()? freshChatCallBack;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final TextStyle? textStyle;
   final Color? textColor;
   final Color? overlappingColor;
-  final Color? backgroundColor;
   final double? overlappingColorOpacity;
   final double? counterRadius;
   const LoomiToastComponent({
-    this.freshChatCallBack,
     this.text = "",
     this.prefixIcon,
     this.suffixIcon,
+    this.textStyle,
     this.textColor,
     this.overlappingColor,
-    this.backgroundColor,
     this.overlappingColorOpacity,
     this.counterRadius,
     Key? key,
@@ -105,7 +103,6 @@ class FunkyOverlayState extends State<LoomiToastComponent>
       padding: MediaQuery.of(context).viewInsets,
       alignment: Alignment.bottomCenter,
       child: Material(
-        color: widget.backgroundColor,
         child: ScaleTransition(
           scale: scaleAnimation,
           child: Container(
@@ -138,12 +135,13 @@ class FunkyOverlayState extends State<LoomiToastComponent>
                         child: Text(
                           widget.text,
                           maxLines: 5,
-                          style: TextStyle(
-                            color: widget.textColor ??
-                                Theme.of(context).primaryColor,
-                            fontSize: 16,
-                            height: 1.2,
-                          ),
+                          style: widget.textStyle ??
+                              TextStyle(
+                                color: widget.textColor ??
+                                    Theme.of(context).primaryColor,
+                                fontSize: 16,
+                                height: 1.2,
+                              ),
                         ),
                       ),
                       widget.suffixIcon ?? Container(),
