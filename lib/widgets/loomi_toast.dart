@@ -9,12 +9,9 @@ showLoomiToast({
   Widget? suffixIcon,
   Widget? prefixIcon,
   TextStyle? textStyle,
-  Color? textColor,
   Color? overlappingColor,
   double? overlappingColorOpacity,
-  Color? backgroundColor,
   double? counterRadius,
-  Function()? freshChatCallBack,
 }) {
   showDialog(
     context: context,
@@ -27,7 +24,6 @@ showLoomiToast({
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         textStyle: textStyle,
-        textColor: textColor,
         counterRadius: counterRadius,
       );
     },
@@ -39,7 +35,6 @@ class LoomiToastComponent extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextStyle? textStyle;
-  final Color? textColor;
   final Color? overlappingColor;
   final double? overlappingColorOpacity;
   final double? counterRadius;
@@ -48,7 +43,6 @@ class LoomiToastComponent extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.textStyle,
-    this.textColor,
     this.overlappingColor,
     this.overlappingColorOpacity,
     this.counterRadius,
@@ -137,8 +131,7 @@ class FunkyOverlayState extends State<LoomiToastComponent>
                           maxLines: 5,
                           style: widget.textStyle ??
                               TextStyle(
-                                color: widget.textColor ??
-                                    Theme.of(context).primaryColor,
+                                color: Theme.of(context).primaryColor,
                                 fontSize: 16,
                                 height: 1.2,
                               ),
