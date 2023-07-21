@@ -17,7 +17,6 @@ class GetIcon extends StatelessWidget {
             icon,
             width: width,
             height: heigth,
-            color: color,
           )
         : Image.asset(
             icon,

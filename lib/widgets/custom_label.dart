@@ -46,7 +46,7 @@ class LoomiCustomLabel extends StatelessWidget {
           if (text != null)
             Text(
               text!,
-              style: textStyle ?? Theme.of(context).textTheme.subtitle2,
+              style: textStyle ?? Theme.of(context).textTheme.titleSmall,
             ),
           if (sufix != null) sufix!,
         ],
