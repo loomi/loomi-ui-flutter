@@ -10,7 +10,7 @@ colorOptions(
 }) {
   return context.knobs.nullable.options<Color>(
     label: label,
-    enabled: enabled!,
+    enabled: true,
     initial: initial ?? Colors.blue,
     options: const [
       Option(

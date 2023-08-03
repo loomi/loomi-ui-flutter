@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
+
+import 'package:storybook_flutter/storybook_flutter.dart';
+
 import 'package:example/screens/story-book/stories/check_box_story.dart';
 import 'package:example/screens/story-book/stories/custom_label_story.dart';
 import 'package:example/screens/story-book/stories/custom_select_story.dart';
 import 'package:example/screens/story-book/stories/radio_selector_story.dart';
 import 'package:example/screens/story-book/stories/show_dialog_story.dart';
-import 'package:flutter/material.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
+
 import 'stories/custom_button_story.dart';
 import 'stories/text_form_field_story.dart';
 
@@ -20,6 +23,7 @@ class _StoryBookState extends State<StoryBook> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Storybook(
+        initialStory: "Custom Button",
         stories: [
           customButtonStory,
           textFormFieldStory,

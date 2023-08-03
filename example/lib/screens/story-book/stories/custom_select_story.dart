@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:loomi_ui_flutter/loomi_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -30,7 +31,6 @@ Story customSelectStory = Story(
                 ),
               )
               .toList(),
-          border: borderOptions(context, label: "Border"),
           hintText: "Hint text here",
           textStyle: Theme.of(context).textTheme.labelLarge,
           borderRadius: BorderRadius.circular(
@@ -48,18 +48,6 @@ Story customSelectStory = Story(
             label: "Widget Sufix",
             enabled: false,
           ),
-          // padding: EdgeInsets.symmetric(
-          //   vertical: doubleSliderOptions(
-          //     context,
-          //     label: "Vertical Padding",
-          //     initial: 8,
-          //   ),
-          //   horizontal: doubleSliderOptions(
-          //     context,
-          //     label: "Horizontal Padding",
-          //     initial: 16,
-          //   ),
-          // ),
         ),
       ],
     ),

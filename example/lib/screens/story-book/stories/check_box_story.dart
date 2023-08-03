@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:loomi_ui_flutter/loomi_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -16,22 +17,13 @@ Story checkBoxStory = Story(
         label: "Unchecked Background Color",
         initial: Colors.white,
       ),
-      checkColor:
-          colorOptions(context, label: "Check Color", initial: Colors.teal),
-      uncheckedOuterBorder: borderOptions(
-        context,
-        label: "Unchecked Outer Border",
-      ),
-      outerBorder: borderOptions(
-        context,
-        label: "Outer Border",
-        enabled: false,
-      ),
-      checkedOuterBorder: borderOptions(
-        context,
-        label: "Checked Outer Border",
-        enabled: false,
-      ),
+      checkColor: colorOptions(
+            context,
+            label: "Check Color",
+            initial: Colors.teal,
+          ) ??
+          Colors.transparent,
+
       borderRadius: BorderRadius.circular(
         doubleSliderOptions(
           context,
@@ -46,37 +38,17 @@ Story checkBoxStory = Story(
         enabled: false,
       ),
       iconColor: colorOptions(
-        context,
-        label: "Icon Color",
-      ),
-      // expandIcon: booleanOption(
-      //   context,
-      //   label: "Expand Icon",
-      //   initial: false,
-      //   enabled: false,
-      // ),
+            context,
+            label: "Icon Color",
+          ) ??
+          Colors.transparent,
       showIcon: booleanOption(
         context,
         label: "Show Icon",
         initial: false,
         enabled: false,
       ),
-      // checkboxHeight: doubleSliderOptions(
-      //   context,
-      //   label: "Checkbox Height",
-      //   initial: 18,
-      //   max: 100,
-      //   min: 0,
-      //   enabled: false,
-      // ),
-      // checkboxWidth: doubleSliderOptions(
-      //   context,
-      //   label: "Checkbox Width",
-      //   initial: 18,
-      //   max: 100,
-      //   min: 0,
-      //   enabled: false,
-      // ),
+
       checkboxPadding: EdgeInsets.symmetric(
         vertical: doubleSliderOptions(
           context,
