@@ -14,6 +14,7 @@ class RadioSelector extends StatelessWidget {
   final TextStyle? textStyle;
   final Color selectedCheckColor;
   final TextStyle? trailingTextStyle;
+  final Color? backgroundColor;
 
   const RadioSelector({
     required this.onTap,
@@ -30,6 +31,7 @@ class RadioSelector extends StatelessWidget {
     this.textStyle,
     this.trailingTextStyle,
     Key? key,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -56,10 +58,13 @@ class RadioSelector extends StatelessWidget {
               ? LinearGradient(
                   colors: [
                     selected
-                        ? Theme.of(context).colorScheme.primary
+                        ? backgroundColor ??
+                            Theme.of(context).colorScheme.primary
                         : Colors.white,
                     selected
-                        ? Theme.of(context).colorScheme.primary.withAlpha(125)
+                        ? (backgroundColor ??
+                                Theme.of(context).colorScheme.primary)
+                            .withAlpha(125)
                         : Colors.white,
                   ],
                   begin: Alignment.topLeft,
@@ -83,7 +88,7 @@ class RadioSelector extends StatelessWidget {
                 child: Text(
                   text,
                   style: textStyle ??
-                      Theme.of(context).textTheme.headline6!.copyWith(
+                      Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: selected
                                 ? Colors.white
                                 : const Color(0xff484848),
@@ -96,7 +101,7 @@ class RadioSelector extends StatelessWidget {
                     trailingText!,
                     textAlign: TextAlign.end,
                     style: trailingTextStyle ??
-                        Theme.of(context).textTheme.headline6!.copyWith(
+                        Theme.of(context).textTheme.titleLarge!.copyWith(
                               color: selected
                                   ? Colors.white
                                   : const Color(0xff484848),

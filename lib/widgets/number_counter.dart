@@ -92,7 +92,7 @@ class _NumberCounterState extends State<NumberCounter> {
                 counter.toString(),
                 maxLines: 1,
                 style: widget.counterTextStyle ??
-                    Theme.of(context).textTheme.headline6,
+                    Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ),

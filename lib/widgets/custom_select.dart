@@ -80,7 +80,7 @@ class _CustomSelectState extends State<CustomSelect> {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButtonFormField<dynamic>(
                       style: widget.textStyle ??
-                          Theme.of(context).textTheme.headline6,
+                          Theme.of(context).textTheme.titleLarge,
                       validator: ((value) {
                         if (widget.validator != null) {
                           setState(() {
@@ -106,7 +106,7 @@ class _CustomSelectState extends State<CustomSelect> {
                           ? Text(
                               widget.hintText!,
                               style: widget.textStyle ??
-                                  Theme.of(context).textTheme.headline6,
+                                  Theme.of(context).textTheme.titleLarge,
                             )
                           : null,
                       onChanged: widget.onChanged,
@@ -132,7 +132,7 @@ class _CustomSelectState extends State<CustomSelect> {
                     child: Text(
                       validatorResult!.statusText!,
                       style: widget.errorStyle ??
-                          Theme.of(context).textTheme.bodyText2!.copyWith(
+                          Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 color: const Color(0xff212121),
                               ),
                     ),

@@ -12,6 +12,7 @@ showLoomiToast({
   Color? overlappingColor,
   double? overlappingColorOpacity,
   double? counterRadius,
+  final bool? hasShadow = true,
 }) {
   showDialog(
     context: context,
@@ -25,6 +26,7 @@ showLoomiToast({
         suffixIcon: suffixIcon,
         textStyle: textStyle,
         counterRadius: counterRadius,
+        hasShadow: hasShadow,
       );
     },
   );
@@ -38,6 +40,8 @@ class LoomiToastComponent extends StatefulWidget {
   final Color? overlappingColor;
   final double? overlappingColorOpacity;
   final double? counterRadius;
+  final bool? hasShadow;
+
   const LoomiToastComponent({
     this.text = "",
     this.prefixIcon,
@@ -46,6 +50,7 @@ class LoomiToastComponent extends StatefulWidget {
     this.overlappingColor,
     this.overlappingColorOpacity,
     this.counterRadius,
+    this.hasShadow = true,
     Key? key,
   }) : super(key: key);
 
@@ -106,14 +111,17 @@ class FunkyOverlayState extends State<LoomiToastComponent>
                   .withOpacity(widget.overlappingColorOpacity ?? .11),
               borderRadius:
                   BorderRadius.all(Radius.circular(widget.counterRadius ?? 10)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
+              boxShadow: widget.hasShadow == true
+                  ? [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ]
+                  : null,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

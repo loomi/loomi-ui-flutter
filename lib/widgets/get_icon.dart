@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GetIcon extends StatelessWidget {
@@ -7,8 +8,14 @@ class GetIcon extends StatelessWidget {
   final double? heigth;
   final Color? color;
   final bool isSvg;
-  const GetIcon(this.icon,
-      {super.key, this.heigth, this.width, this.color, this.isSvg = true});
+  const GetIcon(
+    this.icon, {
+    super.key,
+    this.heigth,
+    this.width,
+    this.color,
+    this.isSvg = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,12 @@ class GetIcon extends StatelessWidget {
             icon,
             width: width,
             height: heigth,
-            color: color,
+            colorFilter: color == null
+                ? null
+                : ColorFilter.mode(
+                    color!,
+                    BlendMode.color,
+                  ),
           )
         : Image.asset(
             icon,

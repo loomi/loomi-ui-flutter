@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loomi_ui_flutter/widgets/default_loader.dart';
 
 class CustomButton extends StatefulWidget {
   final bool? isLoading;
@@ -9,7 +10,7 @@ class CustomButton extends StatefulWidget {
   final Widget? sufix;
   final int? counter;
   final Color? counterBackgroundColor;
-  final BorderRadius? borderRadius;
+  final double? borderRadius;
   final Function()? onTap;
   final double buttonHeight;
   final Function()? onLongPress;
@@ -27,9 +28,7 @@ class CustomButton extends StatefulWidget {
     this.buttonWidth,
     this.backgroundColor,
     this.expanded = false,
-    this.borderRadius = const BorderRadius.all(Radius.circular(5)),
     this.buttonHeight = 66,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.counterBackgroundColor,
     this.counterRadius = 15,
     this.counter,
@@ -40,6 +39,8 @@ class CustomButton extends StatefulWidget {
     this.onLongPress,
     required this.text,
     this.buttonTextStyle,
+    this.borderRadius = 5,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
   });
 
   @override
@@ -59,56 +60,67 @@ class _CustomButtonState extends State<CustomButton> {
         decoration: BoxDecoration(
           color: widget.backgroundColor ?? Theme.of(context).primaryColor,
           border: widget.border,
-          borderRadius: widget.borderRadius,
+          borderRadius: BorderRadius.circular(widget.borderRadius!),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: widget.expanded ? MainAxisSize.max : MainAxisSize.min,
-          children: [
-            if (widget.prefix != null) widget.prefix!,
-            if (widget.prefix != null ||
-                widget.sufix != null ||
-                widget.counter != null)
-              Expanded(
-                child: Container(),
-              ),
-            Text(
-              widget.text,
-              style: widget.buttonTextStyle ??
-                  Theme.of(context).textTheme.headline6,
-            ),
-            if (widget.prefix != null ||
-                widget.sufix != null ||
-                widget.counter != null)
-              Expanded(
-                child: Container(),
-              ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (widget.counter != null)
-                  CircleAvatar(
-                    backgroundColor: widget.counterBackgroundColor,
-                    radius: widget.counterRadius,
-                    child: Text(
-                      widget.counter.toString(),
-                      style: widget.counterTextStyle ??
-                          Theme.of(context).textTheme.headline6,
+        child: widget.isLoading == true
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize:
+                    widget.expanded ? MainAxisSize.max : MainAxisSize.min,
+                children: const [
+                  DefaultLoader(),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize:
+                    widget.expanded ? MainAxisSize.max : MainAxisSize.min,
+                children: [
+                  if (widget.prefix != null) widget.prefix!,
+                  if (widget.prefix != null ||
+                      widget.sufix != null ||
+                      widget.counter != null)
+                    Expanded(
+                      child: Container(),
                     ),
+                  Text(
+                    widget.text,
+                    style: widget.buttonTextStyle ??
+                        Theme.of(context).textTheme.titleLarge,
                   ),
-                if (widget.sufix != null)
-                  ...[
-                    const SizedBox(
-                      width: 5,
+                  if (widget.prefix != null ||
+                      widget.sufix != null ||
+                      widget.counter != null)
+                    Expanded(
+                      child: Container(),
                     ),
-                    widget.sufix!
-                  ].toList(),
-              ],
-            )
-          ],
-        ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (widget.counter != null)
+                        CircleAvatar(
+                          backgroundColor: widget.counterBackgroundColor,
+                          radius: widget.counterRadius,
+                          child: Text(
+                            widget.counter.toString(),
+                            style: widget.counterTextStyle ??
+                                Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                      if (widget.sufix != null)
+                        ...[
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          widget.sufix!
+                        ].toList(),
+                    ],
+                  )
+                ],
+              ),
       ),
     );
   }

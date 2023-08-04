@@ -154,7 +154,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
               Text(
                 widget.label!,
                 style:
-                    widget.textStyle ?? Theme.of(context).textTheme.headline6,
+                    widget.textStyle ?? Theme.of(context).textTheme.titleLarge,
               ),
           ],
         ),
