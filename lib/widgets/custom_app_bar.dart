@@ -4,7 +4,7 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     Key? key,
     required this.title,
-    required this.textInLine,
+    this.widgetInLine = true,
     this.centerTitle = true,
     this.backgroundColor,
     this.leading,
@@ -12,28 +12,24 @@ class CustomAppBar extends StatelessWidget {
     this.styleTitle,
     this.trealing,
     this.padding,
-    this.titlePadding,
     this.margin,
     this.verticalMarginTitle,
-    this.shadowColor,
-    this.elevation,
-    this.shadowValue,
+    this.boxShadow,
   }) : super(key: key);
   final Color? backgroundColor;
   final Widget? leading;
   final Function()? onTapPrefix;
-  final String title;
+  final Widget title;
   final TextStyle? styleTitle;
   final bool centerTitle;
   final List<Widget>? trealing;
   final double? padding;
-  final double? titlePadding;
   final double? margin;
-  final bool textInLine;
+
+  ///Define position the title widget in row or column
+  final bool widgetInLine;
   final double? verticalMarginTitle;
-  final Color? shadowColor;
-  final double? shadowValue;
-  final double? elevation;
+  final List<BoxShadow>? boxShadow;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,17 +38,11 @@ class CustomAppBar extends StatelessWidget {
         margin: EdgeInsets.all(margin ?? 0),
         padding: EdgeInsets.all(padding ?? 12),
         decoration: BoxDecoration(
-          color: backgroundColor ?? Colors.transparent,
-          boxShadow: [
-            BoxShadow(
-              color: shadowColor ?? Colors.grey,
-              blurRadius: shadowValue ?? 8,
-              spreadRadius: elevation ?? 5,
-            ),
-          ],
+          color: backgroundColor ?? Theme.of(context).primaryColor,
+          boxShadow: boxShadow,
         ),
         child: Column(
-          crossAxisAlignment: !textInLine && centerTitle
+          crossAxisAlignment: !widgetInLine && centerTitle
               ? CrossAxisAlignment.center
               : CrossAxisAlignment.start,
           children: [
@@ -62,30 +52,28 @@ class CustomAppBar extends StatelessWidget {
                   GestureDetector(
                     onTap: onTapPrefix,
                     child: leading,
+                  )
+                else
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                      size: 16,
+                    ),
                   ),
-                if (textInLine)
+                if (widgetInLine)
                   Expanded(
                     child: Column(
                       crossAxisAlignment: centerTitle
                           ? CrossAxisAlignment.center
                           : CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: titlePadding ?? 0,
-                            right: titlePadding ?? 0,
-                          ),
-                          child: Text(
-                            title,
-                            style: styleTitle ??
-                                const TextStyle(
-                                    fontSize: 16, color: Colors.black),
-                          ),
-                        ),
+                        title,
                       ],
                     ),
                   ),
-                if (!textInLine) const Spacer(),
+                if (!widgetInLine) const Spacer(),
                 if (trealing != null)
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -95,16 +83,11 @@ class CustomAppBar extends StatelessWidget {
                   ),
               ],
             ),
-            if (!textInLine)
+            if (!widgetInLine)
               SizedBox(
                 height: verticalMarginTitle ?? 0,
               ),
-            if (!textInLine)
-              Text(
-                title,
-                style: styleTitle ??
-                    const TextStyle(fontSize: 16, color: Colors.black),
-              ),
+            if (!widgetInLine) title
           ],
         ),
       ),
