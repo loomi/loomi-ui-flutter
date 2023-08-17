@@ -10,3 +10,6 @@ export 'number_counter.dart';
 export 'loomi_toast.dart';
 export 'loomi_dialog.dart';
 export 'default_loader.dart';
+export 'camera/camera.dart';
+export 'file_picker/file_picker.dart';
+export 'player/player_screen.dart';
