@@ -51,7 +51,6 @@ class _CustomTabItensState extends State<CustomTabItens>
     return Container(
       decoration: widget.backgroundDecoration,
       width: MediaQuery.of(context).size.width,
-      // height: 40,
       child: Center(
         child: TabBar(
           padding: widget.padding ?? const EdgeInsets.only(top: 12),

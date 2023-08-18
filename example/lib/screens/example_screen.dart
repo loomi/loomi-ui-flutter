@@ -36,10 +36,10 @@ class _ExampleScreenState extends State<ExampleScreen> {
           child: Column(
             children: [
               CustomTabItens(
-                selectedTextColor: Colors.green,
-                unselectedTextColor: Colors.amber,
+                selectedTextColor: Colors.blue,
+                unselectedTextColor: Colors.black.withOpacity(0.3),
                 backgroundDecoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.grey.withOpacity(0.1),
                   border: Border(
                     bottom: BorderSide(
                       width: 1,
