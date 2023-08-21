@@ -10,4 +10,6 @@ export 'number_counter.dart';
 export 'loomi_toast.dart';
 export 'loomi_dialog.dart';
 export 'default_loader.dart';
+export 'custom_tab_items.dart';
 export 'custom_app_bar.dart';
+
