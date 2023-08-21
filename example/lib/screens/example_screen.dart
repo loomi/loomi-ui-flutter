@@ -35,7 +35,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
           controller: controller,
           child: Column(
             children: [
-              CustomTabItens(
+              CustomTabItems(
                 selectedTextColor: Colors.blue,
                 unselectedTextColor: Colors.black.withOpacity(0.3),
                 backgroundDecoration: BoxDecoration(

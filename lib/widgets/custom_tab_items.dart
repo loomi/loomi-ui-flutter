@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTabItens extends StatefulWidget {
+class CustomTabItems extends StatefulWidget {
   final List<String> items;
   final BoxDecoration? backgroundDecoration;
   final Color? selectedTextColor;
@@ -10,7 +10,7 @@ class CustomTabItens extends StatefulWidget {
   final EdgeInsets? padding;
   final Function(int) onIndexChanged;
 
-  const CustomTabItens({
+  const CustomTabItems({
     super.key,
     required this.items,
     this.backgroundDecoration,
@@ -23,10 +23,10 @@ class CustomTabItens extends StatefulWidget {
   });
 
   @override
-  State<CustomTabItens> createState() => _CustomTabItensState();
+  State<CustomTabItems> createState() => _CustomTabItemsState();
 }
 
-class _CustomTabItensState extends State<CustomTabItens>
+class _CustomTabItemsState extends State<CustomTabItems>
     with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
 
