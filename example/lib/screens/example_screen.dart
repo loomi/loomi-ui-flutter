@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:loomi_ui_flutter/utils/custom_icons.dart';
@@ -204,46 +205,48 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   label: "Label",
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  pushToCameraScreen(
-                    context: context,
-                    onFileAdded: (file) {
-                      log("Caminho do arquivo:$file");
-                    },
-                  );
-                },
-                child: const Text("Abrir câmera"),
-              ),
-              const SizedBox(height: 5),
-              ElevatedButton(
-                onPressed: () {
-                  pushToPlayerScreen(
-                    context: context,
-                    movieUrl:
-                        "https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/example/9th_may_compressed.mp4?raw=true",
-                    onExit: () {},
-                    onBackground: () {},
-                    seekOnInit: const Duration(seconds: 15),
-                    secondaryColor: Colors.green,
-                    primaryColor: Colors.yellow,
-                    playerHeader: Container(
-                      width: 60,
-                      height: 60,
-                      color: Colors.transparent,
-                    ),
-                  );
-                },
-                child: const Text("Abrir player"),
-              ),
-              const SizedBox(height: 10),
-              SafeArea(
-                child: CustomFilePicker(
-                  label: "Arquivos",
-                  onAdd: (file) {},
-                  limitOfFiles: 10,
+              if (!kIsWeb) ...[
+                ElevatedButton(
+                  onPressed: () {
+                    pushToCameraScreen(
+                      context: context,
+                      onFileAdded: (file) {
+                        log("Caminho do arquivo:$file");
+                      },
+                    );
+                  },
+                  child: const Text("Abrir câmera"),
                 ),
-              ),
+                const SizedBox(height: 5),
+                ElevatedButton(
+                  onPressed: () {
+                    pushToPlayerScreen(
+                      context: context,
+                      movieUrl:
+                          "https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/example/9th_may_compressed.mp4?raw=true",
+                      onExit: () {},
+                      onBackground: () {},
+                      seekOnInit: const Duration(seconds: 15),
+                      secondaryColor: Colors.green,
+                      primaryColor: Colors.yellow,
+                      playerHeader: Container(
+                        width: 60,
+                        height: 60,
+                        color: Colors.transparent,
+                      ),
+                    );
+                  },
+                  child: const Text("Abrir player"),
+                ),
+                const SizedBox(height: 10),
+                SafeArea(
+                  child: CustomFilePicker(
+                    label: "Arquivos",
+                    onAdd: (file) {},
+                    limitOfFiles: 10,
+                  ),
+                ),
+              ],
             ],
           ),
         ),
