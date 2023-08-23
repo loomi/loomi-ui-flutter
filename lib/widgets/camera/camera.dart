@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:ui';
 
@@ -153,7 +154,7 @@ class _CameraScreenState extends State<CameraScreen>
         });
       });
     } catch (e) {
-      print('Error focusing camera: $e');
+      log('Error focusing camera: $e');
     }
   }
 
@@ -204,7 +205,7 @@ class _CameraScreenState extends State<CameraScreen>
         _isFlashOn = !_isFlashOn;
       });
     } catch (e) {
-      print('Error toggling flash: $e');
+      log('Error toggling flash: $e');
     }
   }
 

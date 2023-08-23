@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 
+// ignore: must_be_immutable
 class FeedPlayerPortraitControls extends StatelessWidget {
-  FeedPlayerPortraitControls({Key? key, this.flickManager}) : super(key: key);
+  FeedPlayerPortraitControls({
+    Key? key,
+    this.flickManager,
+  }) : super(key: key);
 
   final FlickManager? flickManager;
 

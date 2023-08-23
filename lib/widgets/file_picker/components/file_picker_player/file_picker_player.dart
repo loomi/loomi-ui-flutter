@@ -13,7 +13,7 @@ class FilePickerPlayer extends StatefulWidget {
   final String url;
 
   @override
-  _FilePickerPlayerState createState() => _FilePickerPlayerState();
+  State<FilePickerPlayer> createState() => _FilePickerPlayerState();
 }
 
 class _FilePickerPlayerState extends State<FilePickerPlayer> {

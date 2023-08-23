@@ -311,6 +311,7 @@ class _CustomFilePickerState extends State<CustomFilePicker> {
   }
 }
 
+// ignore: must_be_immutable
 class FileThumbnail extends StatelessWidget {
   FileThumbnail({
     super.key,

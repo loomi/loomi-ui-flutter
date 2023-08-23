@@ -142,45 +142,37 @@ class _PlayerScreenState extends State<PlayerScreen>
             bottom: false,
             child: Stack(
               children: [
-                flickManager != null
-                    ? FlickVideoPlayer(
+                FlickVideoPlayer(
+                  flickManager: flickManager,
+                  preferredDeviceOrientation: const [
+                    DeviceOrientation.landscapeRight,
+                    DeviceOrientation.landscapeLeft
+                  ],
+                  flickVideoWithControls: SubtitleWrapper(
+                    subtitleController: subtitleController,
+                    videoPlayerController:
+                        flickManager.flickVideoManager!.videoPlayerController!,
+                    subtitleStyle: SubtitleStyle(
+                      textColor: widget.secondaryColor,
+                      fontSize: 20,
+                      hasBorder: true,
+                      position: const SubtitlePosition(bottom: 40),
+                    ),
+                    videoChild: FlickVideoWithControls(
+                      controls: CustomFlickPortraitControls(
+                        header: widget.header,
                         flickManager: flickManager,
-                        preferredDeviceOrientation: const [
-                          DeviceOrientation.landscapeRight,
-                          DeviceOrientation.landscapeLeft
-                        ],
-                        flickVideoWithControls: SubtitleWrapper(
-                          subtitleController: subtitleController,
-                          videoPlayerController: flickManager
-                              .flickVideoManager!.videoPlayerController!,
-                          subtitleStyle: SubtitleStyle(
-                            textColor: widget.secondaryColor,
-                            fontSize: 20,
-                            hasBorder: true,
-                            position: const SubtitlePosition(bottom: 40),
-                          ),
-                          videoChild: FlickVideoWithControls(
-                            controls: CustomFlickPortraitControls(
-                              header: widget.header,
-                              flickManager: flickManager,
-                              fontSize: 17,
-                              progressBarSettings: FlickProgressBarSettings(
-                                backgroundColor: widget.primaryColor,
-                                playedColor: widget.secondaryColor,
-                                handleColor: widget.secondaryColor,
-                                height: 4,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
+                        fontSize: 17,
+                        progressBarSettings: FlickProgressBarSettings(
+                          backgroundColor: widget.primaryColor,
+                          playedColor: widget.secondaryColor,
+                          handleColor: widget.secondaryColor,
+                          height: 4,
                         ),
                       ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
