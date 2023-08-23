@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import 'package:loomi_ui_flutter/loomi_ui.dart';
+import 'package:loomi_ui_flutter/utils/custom_icons.dart';
+import 'package:loomi_ui_flutter/widgets/widgets.dart';
 
 class ExampleScreen extends StatefulWidget {
   const ExampleScreen({super.key});
@@ -32,6 +35,33 @@ class _ExampleScreenState extends State<ExampleScreen> {
           controller: controller,
           child: Column(
             children: [
+              CustomTabItems(
+                selectedTextColor: Colors.blue,
+                unselectedTextColor: Colors.black.withOpacity(0.3),
+                backgroundDecoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.1),
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 1,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                    top: const BorderSide(
+                      width: 1,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                items: const [
+                  "Diário",
+                  "Semanal",
+                  "Mensal",
+                  "Anual",
+                  "Outro",
+                ],
+                onIndexChanged: (int idx) {
+                  log('INDEX CHANGED $idx');
+                },
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CustomButton(
