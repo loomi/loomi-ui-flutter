@@ -135,10 +135,6 @@ class _CustomFlickPortraitControlsState
                         const FlickLeftDuration(
                           fontSize: 17,
                         ),
-                        // const SizedBox(width: 10),
-                        // FlickFullScreenToggle(
-                        //   size: widget.iconSize,
-                        // ),
                       ],
                     ),
                   ],
