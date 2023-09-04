@@ -200,6 +200,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                               color: widget.borderColor ?? Colors.grey,
                             ),
                           ),
+                      disabledBorder: widget.inputBorder ??
+                          OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              widget.borderRadius ?? 12,
+                            ),
+                            borderSide: BorderSide(
+                              width: widget.borderWidth,
+                              color: widget.borderColor ?? Colors.grey,
+                            ),
+                          ),
                       focusColor: widget.focusColor,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintStyle: widget.hintTextStyle,
