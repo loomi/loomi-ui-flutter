@@ -12,6 +12,7 @@ Future pushToCameraScreen({
   required BuildContext context,
   String? popUntil,
   required Function(String) onFileAdded,
+  Function()? helpIconFunction,
 }) async {
   List<CameraDescription> cameras = await availableCameras();
   // ignore: use_build_context_synchronously
@@ -20,6 +21,7 @@ Future pushToCameraScreen({
     MaterialPageRoute(
       builder: (context) => CameraScreen(
         cameras: cameras,
+        helpIconFunction: helpIconFunction,
         onSave: (picture) {
           if (popUntil != null) {
             Navigator.popUntil(
@@ -37,7 +39,13 @@ Future pushToCameraScreen({
 class CameraScreen extends StatefulWidget {
   final List<CameraDescription> cameras;
   final Function(File picture) onSave;
-  const CameraScreen({super.key, required this.cameras, required this.onSave});
+  final Function()? helpIconFunction;
+  const CameraScreen({
+    super.key,
+    required this.cameras,
+    required this.onSave,
+    this.helpIconFunction,
+  });
 
   @override
   State<CameraScreen> createState() => _CameraScreenState();
@@ -259,9 +267,12 @@ class _CameraScreenState extends State<CameraScreen>
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              const Icon(
-                                Icons.help_outline,
-                                color: Colors.white,
+                              GestureDetector(
+                                onTap: widget.helpIconFunction,
+                                child: const Icon(
+                                  Icons.help_outline,
+                                  color: Colors.white,
+                                ),
                               ),
                             ],
                           ),

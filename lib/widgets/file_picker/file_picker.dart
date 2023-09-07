@@ -23,7 +23,7 @@ class CustomFilePicker extends StatefulWidget {
   final Color? componentsColor;
   final bool showActions;
   final int limitOfFiles;
-
+  final TextStyle? style;
   const CustomFilePicker({
     super.key,
     required this.label,
@@ -33,6 +33,7 @@ class CustomFilePicker extends StatefulWidget {
     this.showActions = true,
     this.onRemove,
     required this.limitOfFiles,
+    this.style,
   });
 
   @override
@@ -153,13 +154,14 @@ class _CustomFilePickerState extends State<CustomFilePicker> {
                           const SizedBox(height: 15),
                           Text(
                             !loading ? "Incluir mídia" : "Incluindo mídia",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 18,
-                                ),
+                            style: widget.style ??
+                                Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 18,
+                                    ),
                           ),
                         ],
                       ),
