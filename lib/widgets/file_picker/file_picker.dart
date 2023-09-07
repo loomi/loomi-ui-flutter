@@ -24,6 +24,8 @@ class CustomFilePicker extends StatefulWidget {
   final bool showActions;
   final int limitOfFiles;
   final TextStyle? style;
+  final String? mediaSubtitleText;
+  final String? mediaSubtitleTextWithLoading;
   const CustomFilePicker({
     super.key,
     required this.label,
@@ -34,6 +36,8 @@ class CustomFilePicker extends StatefulWidget {
     this.onRemove,
     required this.limitOfFiles,
     this.style,
+    this.mediaSubtitleText,
+    this.mediaSubtitleTextWithLoading,
   });
 
   @override
@@ -153,7 +157,10 @@ class _CustomFilePickerState extends State<CustomFilePicker> {
                           ),
                           const SizedBox(height: 15),
                           Text(
-                            !loading ? "Incluir mídia" : "Incluindo mídia",
+                            !loading
+                                ? widget.mediaSubtitleText ?? "Incluir mídia"
+                                : widget.mediaSubtitleTextWithLoading ??
+                                    "Incluindo mídia",
                             style: widget.style ??
                                 Theme.of(context)
                                     .textTheme
