@@ -187,7 +187,7 @@ class _CustomFilePickerState extends State<CustomFilePicker> {
                         showPdfDetails(files[i].path, context);
                       }
                       if (extension.toLowerCase() == "mp4") {
-                        showVideoDetails(files[i].path, context);
+                        //showVideoDetails(files[i].path, context);
                       }
                     },
                     behavior: HitTestBehavior.translucent,
