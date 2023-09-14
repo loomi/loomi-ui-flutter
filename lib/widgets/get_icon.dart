@@ -24,12 +24,7 @@ class GetIcon extends StatelessWidget {
             icon,
             width: width,
             height: heigth,
-            colorFilter: color == null
-                ? null
-                : ColorFilter.mode(
-                    color!,
-                    BlendMode.color,
-                  ),
+            color: color,
           )
         : Image.asset(
             icon,
