@@ -42,36 +42,6 @@ class _FilePickerPlayerState extends State<FilePickerPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    // return FlickVideoPlayer(
-    //   flickManager: flickManager,
-    //   flickVideoWithControls: FlickVideoWithControls(
-    //     playerLoadingFallback: Stack(
-    //       children: [
-    //         Positioned.fill(
-    //           child: Center(
-    //             child: CircularProgressIndicator(
-    //               backgroundColor: Theme.of(context).primaryColor,
-    //             ),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //     controls: FeedPlayerPortraitControls(
-    //       flickManager: flickManager,
-    //     ),
-    //   ),
-    //   flickVideoWithControlsFullscreen: FlickVideoWithControls(
-    //     controls: const FlickLandscapeControls(),
-    //     iconThemeData: IconThemeData(
-    //       size: 40,
-    //       color: Theme.of(context).primaryColor,
-    //     ),
-    //     textStyle: TextStyle(
-    //       fontSize: 16,
-    //       color: Theme.of(context).primaryColor,
-    //     ),
-    //   ),
-    // );
     return Stack(
       children: [
         _controller.value.isInitialized
