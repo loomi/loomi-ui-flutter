@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:example/screens/story-book/stories/check_box_story.dart';
+import 'package:example/screens/story-book/stories/custom_alert_story.dart';
 import 'package:example/screens/story-book/stories/custom_label_story.dart';
 import 'package:example/screens/story-book/stories/custom_select_story.dart';
+import 'package:example/screens/story-book/stories/custom_text_badge_story.dart';
+import 'package:example/screens/story-book/stories/quantity_selector.dart';
 import 'package:example/screens/story-book/stories/radio_selector_story.dart';
 import 'package:example/screens/story-book/stories/show_dialog_story.dart';
 
@@ -31,7 +34,10 @@ class _StoryBookState extends State<StoryBook> {
           showDialogStory,
           checkBoxStory,
           customSelectStory,
-          radioSelectorStory
+          radioSelectorStory,
+          customTextBadgeStory,
+          quantitySelectorStory,
+          customAlertStory
         ],
       ),
     );

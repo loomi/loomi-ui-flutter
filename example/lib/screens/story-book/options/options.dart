@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:loomi_ui_flutter/widgets/widgets.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 colorOptions(
@@ -165,6 +166,28 @@ inputBorderOptions(
       const Option(
         label: 'No Border',
         value: InputBorder.none,
+      ),
+    ],
+  );
+}
+
+checkTypeOptions(
+  BuildContext context, {
+  required String label,
+  bool? enabled = true,
+}) {
+  return context.knobs.nullable.options(
+    label: label,
+    initial: CheckType.icon,
+    enabled: enabled!,
+    options: [
+      const Option(
+        label: 'Icon',
+        value: CheckType.icon,
+      ),
+      const Option(
+        label: 'Container',
+        value: CheckType.container,
       ),
     ],
   );
