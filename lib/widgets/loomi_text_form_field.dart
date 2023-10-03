@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -127,9 +128,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               children: [
                 Expanded(
                   child: TextFormField(
-                    onEditingComplete: () => Platform.isIOS
-                        ? FocusScope.of(context).unfocus()
-                        : FocusScope.of(context).nextFocus(),
+                    onEditingComplete: kIsWeb
+                        ? null
+                        : () => Platform.isIOS
+                            ? FocusScope.of(context).unfocus()
+                            : FocusScope.of(context).nextFocus(),
                     onFieldSubmitted: widget.onFieldSubmitted,
                     controller: widget.textEditingController,
                     onChanged: widget.onChanged,
