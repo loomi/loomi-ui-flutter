@@ -14,6 +14,7 @@ class CustomQuantitySelector extends StatefulWidget {
   final Color? addIconColor;
   final Color? subIconColor;
   final String? text;
+  final BoxDecoration? containerDecoration;
 
   const CustomQuantitySelector({
     super.key,
@@ -28,6 +29,7 @@ class CustomQuantitySelector extends StatefulWidget {
     this.addIconColor,
     this.subIconColor,
     this.text,
+    this.containerDecoration,
   });
 
   @override
@@ -52,16 +54,17 @@ class _CustomQuantitySelectorState extends State<CustomQuantitySelector> {
           width: 20,
         ),
         Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black.withOpacity(
-                0.08,
+          decoration: widget.containerDecoration ??
+              BoxDecoration(
+                border: Border.all(
+                  color: Colors.black.withOpacity(
+                    0.08,
+                  ),
+                  width: 1,
+                ),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
               ),
-              width: 1,
-            ),
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -91,7 +94,8 @@ class _CustomQuantitySelectorState extends State<CustomQuantitySelector> {
                       controller: widget.controller,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(4)
                       ],
                       decoration: const InputDecoration(
                         border: InputBorder.none,

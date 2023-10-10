@@ -18,6 +18,7 @@ class CustomNumberCounter extends StatefulWidget {
   final Color? mainColor;
   final double? borderRadius;
   final double? mainBorderRadius;
+  final EdgeInsets? iconPadding;
 
   const CustomNumberCounter({
     super.key,
@@ -38,6 +39,7 @@ class CustomNumberCounter extends StatefulWidget {
     this.borderRadius,
     this.mainBorderRadius,
     this.padding,
+    this.iconPadding = const EdgeInsets.all(12),
   });
 
   @override
@@ -85,7 +87,7 @@ class _CustomNumberCounterState extends State<CustomNumberCounter> {
                   borderRadius: BorderRadius.circular(widget.borderRadius ?? 5),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: widget.iconPadding!,
                   child: Icon(
                     Icons.remove,
                     color: widget.subIconColor,
@@ -142,7 +144,7 @@ class _CustomNumberCounterState extends State<CustomNumberCounter> {
                   borderRadius: BorderRadius.circular(widget.borderRadius ?? 5),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: widget.iconPadding!,
                   child: Icon(
                     Icons.add,
                     color: widget.addIconColor,
