@@ -160,7 +160,7 @@ class _CustomFilePickerState extends State<CustomFilePicker> {
                             !loading
                                 ? widget.mediaSubtitleText ?? "Incluir mídia"
                                 : widget.mediaSubtitleTextWithLoading ??
-                                    "Incluindo mídia",
+                                    "Incluindo mídia...",
                             style: widget.style ??
                                 Theme.of(context)
                                     .textTheme

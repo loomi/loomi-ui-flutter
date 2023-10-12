@@ -9,17 +9,21 @@ Future<File> compressAndGetFile({
   int minHeight = 1080,
 }) async {
   String path = (await getTemporaryDirectory()).path;
-  var result = await FlutterImageCompress.compressAndGetFile(
-    file.absolute.path,
-    "$path/${DateTime.now().microsecondsSinceEpoch.toString()}.png",
-    format: CompressFormat.png,
-    minHeight: minHeight,
-    minWidth: minWidth,
-  );
-  result ??= await compressAndGetFile(
-    file: file,
-    minHeight: minHeight,
-    minWidth: minWidth,
-  );
+  var result = File((await FlutterImageCompress.compressAndGetFile(
+        file.absolute.path,
+        "$path/${DateTime.now().microsecondsSinceEpoch.toString()}.png",
+        format: CompressFormat.png,
+        minHeight: minHeight,
+        minWidth: minWidth,
+      ))
+          ?.path ??
+      "");
+  if (result.path.isEmpty) {
+    result = await compressAndGetFile(
+      file: file,
+      minHeight: minHeight,
+      minWidth: minWidth,
+    );
+  }
   return result;
 }
