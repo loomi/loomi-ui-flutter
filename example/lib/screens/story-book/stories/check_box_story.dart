@@ -10,74 +10,52 @@ Story checkBoxStory = Story(
   description: 'A Custom CheckBox',
   builder: (context) => Padding(
     padding: const EdgeInsets.all(8.0),
-    child: CustomCheckbox(
-      true,
-      uncheckedBackgroundColor: colorOptions(
+    child: CustomCheckBox(
+      isChecked: booleanOption(
         context,
-        label: "Unchecked Background Color",
-        initial: Colors.white,
+        label: "Is Checked",
       ),
-      checkColor: colorOptions(
-            context,
-            label: "Check Color",
-            initial: Colors.teal,
-          ) ??
-          Colors.transparent,
-
-      borderRadius: BorderRadius.circular(
-        doubleSliderOptions(
-          context,
-          label: "Border Radius",
-          enabled: false,
-        ),
-      ),
-      iconSize: doubleSliderOptions(
+      onChanged: (value) {},
+      activeColor: colorOptions(
         context,
-        label: "Icon Size",
-        initial: 20,
-        enabled: false,
+        label: "Active Color",
+        initial: Colors.green,
       ),
-      iconColor: colorOptions(
-            context,
-            label: "Icon Color",
-          ) ??
-          Colors.transparent,
-      showIcon: booleanOption(
+      inactiveColor: colorOptions(
         context,
-        label: "Show Icon",
-        initial: false,
-        enabled: false,
+        label: "Inactive Color",
+        initial: Colors.grey,
       ),
-
-      checkboxPadding: EdgeInsets.symmetric(
-        vertical: doubleSliderOptions(
-          context,
-          label: "Checkbox Vertical Padding",
-          initial: 8,
-          enabled: false,
-        ),
-        horizontal: doubleSliderOptions(
-          context,
-          label: "Checkbox Horizontal Padding",
-          initial: 16,
-          enabled: false,
-        ),
+      size: doubleSliderOptions(
+        context,
+        label: "Size",
+        initial: 30,
+        min: 20,
+        max: 100,
       ),
-      // iconPadding: EdgeInsets.symmetric(
-      //   vertical: doubleSliderOptions(
-      //     context,
-      //     label: "Icon Vertical Padding",
-      //     initial: 8,
-      //     enabled: false,
-      //   ),
-      //   horizontal: doubleSliderOptions(
-      //     context,
-      //     label: "Icon Horizontal Padding",
-      //     initial: 16,
-      //     enabled: false,
-      //   ),
-      // ),
-      label: "Label here",
+      borderRadius: doubleSliderOptions(
+        context,
+        label: "Border Radius",
+        min: 8,
+        max: 64,
+        initial: 8,
+      ),
+      checkType: checkTypeOptions(
+        context,
+        label: "Check Type",
+      ),
+      labelText: 'Aceito os termos e condições',
+      labelTextStyle: const TextStyle(color: Colors.white, fontSize: 16),
+      inactiveBorderColor: colorOptions(
+        context,
+        label: "inactiveBorderColor",
+        initial: Colors.transparent,
+      ),
+      activeBorderColor: colorOptions(
+        context,
+        label: "activeBorderColor",
+        initial: Colors.transparent,
+      ),
     ),
   ),
 );

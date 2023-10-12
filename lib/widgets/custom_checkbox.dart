@@ -1,164 +1,91 @@
 import 'package:flutter/material.dart';
-import 'package:loomi_ui_flutter/utils/custom_icons.dart';
-import 'package:loomi_ui_flutter/widgets/get_icon.dart';
 
-class CustomCheckbox extends StatefulWidget {
-  final bool check;
-  final Color? uncheckedBackgroundColor;
-  final Color? checkColor;
-  final BorderRadius? borderRadius;
-  final BoxBorder? checkedOuterBorder;
-  final BoxBorder? outerBorder;
-  final double checkboxHeight;
-  final double checkboxWidth;
-  final Color iconColor;
-  final bool showIcon;
-  final BoxBorder? uncheckedOuterBorder;
-  final TextStyle? textStyle;
-  final String? label;
-  final double? iconSize;
-  final List<BoxShadow>? boxShadow;
-  final EdgeInsets? checkboxPadding;
-  final EdgeInsets? iconPadding;
-  final bool expandIcon;
+enum CheckType { icon, container }
 
-  const CustomCheckbox(
-    this.check, {
-    super.key,
-    this.expandIcon = false,
-    this.checkboxPadding,
-    this.showIcon = true,
-    this.checkboxHeight = 18,
-    this.checkboxWidth = 18,
-    this.borderRadius,
-    this.checkColor,
+class CustomCheckBox extends StatelessWidget {
+  final bool isChecked;
+  final ValueChanged<bool>? onChanged;
+  final Color activeColor;
+  final Color inactiveColor;
+  final Color? iconColor;
+  final double size;
+  final double borderRadius;
+  final CheckType checkType;
+  final String? labelText;
+  final TextStyle? labelTextStyle;
+  final Color activeBorderColor;
+  final Color inactiveBorderColor;
+
+  const CustomCheckBox({
+    Key? key,
+    required this.isChecked,
+    this.onChanged,
+    this.activeColor = Colors.blue,
+    this.inactiveColor = Colors.grey,
+    this.size = 24.0,
+    this.borderRadius = 4.0,
+    this.checkType = CheckType.icon,
+    this.labelText,
+    this.labelTextStyle,
+    this.activeBorderColor = Colors.black,
+    this.inactiveBorderColor = Colors.black,
     this.iconColor = Colors.white,
-    this.checkedOuterBorder,
-    this.label,
-    this.outerBorder,
-    this.textStyle,
-    this.boxShadow,
-    this.iconPadding,
-    this.uncheckedOuterBorder,
-    this.uncheckedBackgroundColor,
-    this.iconSize,
-  });
-
-  @override
-  State<CustomCheckbox> createState() => _CustomCheckboxState();
-}
-
-class _CustomCheckboxState extends State<CustomCheckbox> {
-  bool checked = false;
-  double checkboxHeight = 0;
-  double checkboxWidth = 0;
-  double backgroundWidth = 0;
-  double backgroundHeight = 0;
-
-  @override
-  void initState() {
-    checked = widget.check;
-    setCheckBoxSizes();
-    super.initState();
-  }
-
-  void setCheckBoxSizes() {
-    checkboxHeight = widget.checkboxHeight;
-    checkboxWidth = widget.checkboxWidth;
-
-    if (widget.checkboxPadding != null) {
-      var padding = widget.checkboxPadding!;
-      backgroundWidth = checkboxWidth + padding.left + padding.right;
-      backgroundHeight = checkboxHeight + padding.top + padding.bottom;
-      if (checkboxWidth > backgroundWidth) {
-        checkboxWidth = backgroundWidth;
-      }
-      if (checkboxHeight > backgroundHeight) {
-        checkboxHeight = backgroundHeight;
-      }
-    } else {
-      backgroundWidth = widget.checkboxWidth;
-      backgroundHeight = widget.checkboxHeight;
-    }
-  }
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          checked = !checked;
-        });
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          border: widget.outerBorder,
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(6),
-          boxShadow: widget.boxShadow,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              padding: widget.checkboxPadding,
-              width: backgroundWidth,
-              height: backgroundHeight,
-              decoration: BoxDecoration(
-                borderRadius: widget.borderRadius ?? BorderRadius.circular(6),
-                color: widget.uncheckedBackgroundColor ??
-                    Theme.of(context).unselectedWidgetColor,
-                border: checked
-                    ? widget.checkedOuterBorder
-                    : widget.uncheckedOuterBorder,
-              ),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.linear,
-                width: checkboxWidth,
-                height: checkboxHeight,
-                decoration: BoxDecoration(
-                  color: checked
-                      ? widget.checkColor ?? Theme.of(context).primaryColor
-                      : widget.uncheckedBackgroundColor ??
-                          Theme.of(context).unselectedWidgetColor,
-                  borderRadius: widget.borderRadius ?? BorderRadius.circular(6),
-                ),
-                child: Center(
-                  child: checked && widget.showIcon
-                      ? Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: widget.iconPadding ??
-                                      const EdgeInsets.all(0),
-                                  child: GetIcon(
-                                    CustomIcons.checkIcon,
-                                    width: widget.iconSize,
-                                    color: widget.iconColor,
-                                    heigth: widget.iconSize,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      : Container(),
-                ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GestureDetector(
+          onTap: () {
+            onChanged?.call(!isChecked);
+          },
+          child: Container(
+            width: size,
+            height: size,
+            decoration: BoxDecoration(
+              color: isChecked
+                  ? checkType == CheckType.icon
+                      ? activeColor
+                      : inactiveColor
+                  : inactiveColor,
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: Border.all(
+                color: isChecked ? activeBorderColor : inactiveBorderColor,
               ),
             ),
-            if (widget.label != null) const SizedBox(width: 10),
-            if (widget.label != null)
-              Text(
-                widget.label!,
-                style:
-                    widget.textStyle ?? Theme.of(context).textTheme.titleLarge,
-              ),
-          ],
+            child: Center(
+              child: isChecked
+                  ? checkType == CheckType.icon
+                      ? Icon(
+                          Icons.check,
+                          color: iconColor,
+                          size: size / 2,
+                        )
+                      : Container(
+                          width: size / 1.35,
+                          height: size / 1.35,
+                          decoration: BoxDecoration(
+                            color: activeColor,
+                            borderRadius: BorderRadius.circular(
+                              borderRadius,
+                            ),
+                          ),
+                        )
+                  : null,
+            ),
+          ),
         ),
-      ),
+        if (labelText != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              labelText!,
+              style: labelTextStyle ?? const TextStyle(fontSize: 16),
+            ),
+          ),
+      ],
     );
   }
 }

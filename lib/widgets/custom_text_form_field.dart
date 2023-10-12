@@ -46,6 +46,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool inlineLabel;
   final double borderWidth;
   final Alignment? labelAlignment;
+  final Iterable<String>? autofillHints;
 
   const CustomTextFormField({
     Key? key,
@@ -90,6 +91,7 @@ class CustomTextFormField extends StatefulWidget {
     this.inlineLabel = false,
     this.borderWidth = 2,
     this.labelAlignment,
+    this.autofillHints,
   }) : super(key: key);
 
   @override
