@@ -3,10 +3,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:loomi_ui_flutter/loomi_ui.dart';
-import 'package:video_player/video_player.dart';
+
 import 'package:subtitle_wrapper_package/subtitle_wrapper_package.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:video_player/video_player.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
+
+import 'package:loomi_ui_flutter/loomi_ui.dart';
 
 pushToPlayerScreen({
   required BuildContext context,
@@ -72,7 +74,7 @@ class _PlayerScreenState extends State<PlayerScreen>
   Duration _position = const Duration();
   @override
   void initState() {
-    Wakelock.enable();
+    WakelockPlus.enable();
     WidgetsBinding.instance.addObserver(this);
     if (widget.subtitleController != null) {
       subtitleController = widget.subtitleController!;
@@ -336,7 +338,7 @@ class _PlayerScreenState extends State<PlayerScreen>
       DeviceOrientation.portraitUp,
     ]);
     widgetsTimer.cancel();
-    Wakelock.disable();
+    WakelockPlus.disable();
     _controller.dispose();
   }
 }
