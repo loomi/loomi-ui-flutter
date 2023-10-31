@@ -2,39 +2,12 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+
+import 'package:camera/camera.dart';
 import 'package:image/image.dart' as img;
 import 'package:loomi_ui_flutter/widgets/camera/camera_preview.dart';
 import 'package:path_provider/path_provider.dart';
-
-Future pushToCameraScreen({
-  required BuildContext context,
-  String? popUntil,
-  required Function(String) onFileAdded,
-  Function()? helpIconFunction,
-}) async {
-  List<CameraDescription> cameras = await availableCameras();
-  // ignore: use_build_context_synchronously
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => CameraScreen(
-        cameras: cameras,
-        helpIconFunction: helpIconFunction,
-        onSave: (picture) {
-          if (popUntil != null) {
-            Navigator.popUntil(
-              context,
-              ModalRoute.withName(popUntil),
-            );
-          }
-          onFileAdded(picture.path);
-        },
-      ),
-    ),
-  );
-}
 
 class CameraScreen extends StatefulWidget {
   final List<CameraDescription> cameras;

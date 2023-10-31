@@ -371,18 +371,6 @@ class _ExampleScreenState extends State<ExampleScreen> {
               if (!kIsWeb) ...[
                 ElevatedButton(
                   onPressed: () {
-                    pushToCameraScreen(
-                      context: context,
-                      onFileAdded: (file) {
-                        log("Caminho do arquivo:$file");
-                      },
-                    );
-                  },
-                  child: const Text("Abrir câmera"),
-                ),
-                const SizedBox(height: 5),
-                ElevatedButton(
-                  onPressed: () {
                     pushToPlayerScreen(
                       context: context,
                       movieUrl:
@@ -400,14 +388,6 @@ class _ExampleScreenState extends State<ExampleScreen> {
                     );
                   },
                   child: const Text("Abrir player"),
-                ),
-                const SizedBox(height: 10),
-                SafeArea(
-                  child: CustomFilePicker(
-                    label: "Arquivos",
-                    onAdd: (file) {},
-                    limitOfFiles: 10,
-                  ),
                 ),
               ],
             ],
