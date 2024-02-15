@@ -42,6 +42,7 @@ class CustomTextFormField extends StatefulWidget {
   final Color? borderColor;
   final Color? errorBorderColor;
   final Color? focusedBorderColor;
+  final FocusNode? focusNode;
   final Color? focusedErrorBorderColor;
   final bool inlineLabel;
   final double borderWidth;
@@ -66,6 +67,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     this.enabled = true,
     this.errorText,
+    this.focusNode,
     this.backgroundColor,
     this.textEditingController,
     this.capitalization = TextCapitalization.none,
@@ -138,6 +140,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     onFieldSubmitted: widget.onFieldSubmitted,
                     controller: widget.textEditingController,
                     onChanged: widget.onChanged,
+                    focusNode: widget.focusNode,
                     validator: widget.validator,
                     keyboardType: widget.keyboardType,
                     textCapitalization: widget.capitalization,
