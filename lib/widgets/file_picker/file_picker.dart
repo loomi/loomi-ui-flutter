@@ -4,6 +4,8 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:loomi_ui_flutter/utils/custom_icons.dart';
 import 'package:loomi_ui_flutter/utils/misc.dart';
 import 'package:loomi_ui_flutter/widgets/camera/camera.dart';
@@ -11,7 +13,6 @@ import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 import 'package:loomi_ui_flutter/widgets/get_icon.dart';
 import 'package:loomi_ui_flutter/widgets/file_picker/components/image_details.dart';
 import 'package:loomi_ui_flutter/widgets/file_picker/components/pdf_details.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 
 import 'components/video_details.dart';
 
@@ -415,12 +416,11 @@ class FileThumbnail extends StatelessWidget {
 
   Future<Uint8List> getVideoThumbnailBytes() async {
     return (await VideoThumbnail.thumbnailData(
-          video: file.path,
-          imageFormat: ImageFormat.JPEG,
-          maxWidth: 128,
-          quality: 25,
-        )) ??
-        Uint8List(0);
+      video: file.path,
+      imageFormat: ImageFormat.JPEG,
+      maxWidth: 128,
+      quality: 25,
+    ));
   }
 }
 
