@@ -26,7 +26,7 @@ dependencies:
   mobx: 2.2.0
   flutter_mobx: 2.0.6+5
   flutter_image_compress: 2.4.0
-  flutter_pdfview: 1.2.7
+  flutter_pdfview: 1.4.0
   video_thumbnail: 0.5.3
 
 dev_dependencies:
